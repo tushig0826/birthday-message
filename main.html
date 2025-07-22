@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Төрсөн өдрийн мэнд!</title>
+  <style>
+    body {
+      background: linear-gradient(to top right, #ffe0f0, #d0f0ff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    header {
+      text-align: center;
+      font-size: 3em;
+      padding: 1rem;
+      color: #ff66cc;
+      text-shadow: 2px 2px 4px #ffaadd;
+      font-weight: bold;
+    }
+
+    .message-container {
+      text-align: center;
+      font-size: 2em;
+      color: #ff3399;
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      animation: float 3s ease-in-out infinite;
+      max-width: 800px;
+      margin: 2rem auto 1rem auto;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .fade-text {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .fade-text.show {
+      opacity: 1;
+    }
+
+    .image-frame {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .image-frame img {
+      width: 250px;
+      height: auto;
+      border: 8px solid #ffb6c1;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+
+    .chick-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .chick-row img {
+      width: 100px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255, 192, 203, 0.6);
+    }
+
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: floatBalloon 8s infinite ease-in-out;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #888;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      50% { transform: translateY(-200px) rotate(10deg); opacity: 0.8; }
+      100% { transform: translateY(0) rotate(-10deg); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>🎉 ТӨРСӨН ӨДРИЙН МЭНД ХҮРГЭЕ! 🎂</header>
+  <div class="message-container">
+    <div class="fade-text" id="line"></div>
+  </div>
+
+  <div class="image-frame">
+    <img src="https://i.imgur.com/6M513Fx.png" alt="Happy Birthday">
+  </div>
+
+  <div class="chick-row">
+    <img src="https://i.imgur.com/ugAxZTc.png" alt="Pink Unicorn Chick">
+    <img src="https://i.imgur.com/1Zn6p0O.png" alt="Green Dino Chick">
+    <img src="https://i.imgur.com/rQKjAyw.png" alt="Deer Chick">
+    <img src="https://i.imgur.com/rQKjAyw.png" alt="Deer Chick">
+  </div>
+
+  <!-- Balloons -->
+  <script>
+    for (let i = 0; i < 10; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDelay = (Math.random() * 5) + 's';
+      balloon.style.background = `radial-gradient(circle at 30% 30%, hsl(${Math.random()*360}, 100%, 75%), hsl(${Math.random()*360}, 100%, 50%))`;
+      document.body.appendChild(balloon);
+    }
+
+    const lines = [
+      "Хөөрхөн хань Амгалантуулдаа...",
+      "Нялх, эрх дэгдээхий минь 💖",
+      "Чамдаа төрсөн өдрийн баярын халуун мэнд хүргэе!",
+      "Хамтдаа аз жаргал, хайр дүүрэн амьдаръя!",
+      "Хайртай шүү — нөхөр Түшигээс."
+    ];
+
+    const lineElem = document.getElementById('line');
+    let index = 0;
+
+    function showNextLine() {
+      lineElem.classList.remove('show');
+      setTimeout(() => {
+        lineElem.textContent = lines[index];
+        lineElem.classList.add('show');
+        index++;
+        if (index < lines.length) {
+          setTimeout(showNextLine, 3000);
+        }
+      }, 1000);
+    }
+
+    showNextLine();
+  </script>
+</body>
+</html>
