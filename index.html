@@ -9,13 +9,13 @@
       background: linear-gradient(to top right, #ffe0f0, #d0f0ff);
       font-family: 'Comic Sans MS', cursive, sans-serif;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     header {
       text-align: center;
       font-size: 3em;
-      padding: 1rem;
+      padding: 3rem;
       color: #ff66cc;
       text-shadow: 2px 2px 4px #ffaadd;
       font-weight: bold;
@@ -26,7 +26,7 @@
       font-size: 2em;
       color: #ff3399;
       background: white;
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
       animation: float 3s ease-in-out infinite;
@@ -54,7 +54,7 @@
     }
 
     .image-frame img {
-      width: 250px;
+      width: 500px;
       height: auto;
       border: 8px solid #ffb6c1;
       border-radius: 20px;
@@ -83,6 +83,7 @@
       background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       animation: floatBalloon 8s infinite ease-in-out;
+      z-index: 0;
     }
 
     .balloon::after {
@@ -100,6 +101,51 @@
       50% { transform: translateY(-200px) rotate(10deg); opacity: 0.8; }
       100% { transform: translateY(0) rotate(-10deg); opacity: 1; }
     }
+
+    .tickets-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 1000px;
+      padding: 1rem;
+    }
+
+    .ticket {
+      width: 200px;
+      height: 100px;
+      background: #fffafc;
+      border: 3px dashed #ff69b4;
+      border-radius: 20px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      position: relative;
+    }
+
+    .ticket::before, .ticket::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border: 3px dashed #ff69b4;
+      border-radius: 50%;
+    }
+
+    .ticket::before {
+      top: -10px;
+      left: -10px;
+    }
+    .ticket::after {
+      bottom: -10px;
+      right: -10px;
+    }
   </style>
 </head>
 <body>
@@ -109,17 +155,31 @@
   </div>
 
   <div class="image-frame">
-    <img src="https://i.imgur.com/6M513Fx.png" alt="Happy Birthday">
+    <img src="uscroatia.jpeg" alt="Happy Birthday">
   </div>
 
   <div class="chick-row">
-    <img src="https://i.imgur.com/ugAxZTc.png" alt="Pink Unicorn Chick">
-    <img src="https://i.imgur.com/1Zn6p0O.png" alt="Green Dino Chick">
-    <img src="https://i.imgur.com/rQKjAyw.png" alt="Deer Chick">
-    <img src="https://i.imgur.com/rQKjAyw.png" alt="Deer Chick">
+    <img src="uni.png" alt="Pink Unicorn Chick">
+    <img src="dino.png" alt="Green Dino Chick">
+    <img src="bugahan.png" alt="Deer Chick">
+    <img src="sogoohon.png" alt="Deer Chick">
+  </div>
+  <h2 style="text-align:center; color:#ff66cc; font-family: 'Comic Sans MS', cursive, sans-serif; margin-top: 2rem;">
+    🎟️ Тасалбарууд 🎟️
+  </h2>
+  <div class="tickets-container">
+    <div class="ticket">🎫 3 удаа дулааахан тэврэлт 🤗</div>
+    <div class="ticket">🎬 Хүссэн кино хамт үзэх 🍿</div>
+    <div class="ticket">👑 Нэг өдөр эрх мэдэлтэй байх 👸</div>
+    <div class="ticket">☕ Орны дэргэд өглөөний цай</div>
+    <div class="ticket">🌸 Романтик салхилалт</div>
+    <div class="ticket">🎁 Гэнэтийн сюрприз</div>
+    <div class="ticket">🚗 Хүссэн газраар хамт аялах</div>
+    <div class="ticket">🍝 Дуртай хоолоор дайлуулах</div>
+    <div class="ticket">🎲 Хамт тоглоом тоглох</div>
+    <div class="ticket">😇 Намайг эрхлүүлэх өдөр</div>
   </div>
 
-  <!-- Balloons -->
   <script>
     for (let i = 0; i < 10; i++) {
       const balloon = document.createElement('div');
@@ -131,7 +191,7 @@
     }
 
     const lines = [
-      "Хөөрхөн хань Амгалантуулдаа...",
+      "Хайрт эхнэр Амгалантуулдаа...",
       "Нялх, эрх дэгдээхий минь 💖",
       "Чамдаа төрсөн өдрийн баярын халуун мэнд хүргэе!",
       "Хамтдаа аз жаргал, хайр дүүрэн амьдаръя!",
